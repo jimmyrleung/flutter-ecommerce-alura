@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'app/pages/details.dart';
+import 'app/pages/cart.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,6 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/cart': (context) => Cart(),
+      },
       title: 'Flutter Demo',
       // * DISABLE debug banner debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -79,6 +84,20 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Scaffold is a base structure for Material Design widgets
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: FlatButton(
+        onPressed: () {
+          // Navigation through Navigator
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Details()),
+          );
+        },
+        child: Text('Detalhes'),
+      ),
+    );
   }
 }
