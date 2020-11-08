@@ -86,6 +86,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     // Scaffold is a base structure for Material Design widgets
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: CustomAppBar(
         title: 'Alura E-Commerce',
       ),
