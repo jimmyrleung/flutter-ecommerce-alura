@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app/pages/details.dart';
 import 'app/pages/cart.dart';
+import 'app/widgets/custom_appbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -85,8 +86,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     // Scaffold is a base structure for Material Design widgets
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
+      appBar: CustomAppBar(
+        title: 'Alura E-Commerce',
       ),
       body: FlatButton(
         onPressed: () {
