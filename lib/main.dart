@@ -89,6 +89,7 @@ class Home extends StatelessWidget {
       backgroundColor: Colors.grey[200],
       appBar: CustomAppBar(
         title: 'Alura E-Commerce',
+        isAtCart: false,
       ),
       body: FlatButton(
         onPressed: () {

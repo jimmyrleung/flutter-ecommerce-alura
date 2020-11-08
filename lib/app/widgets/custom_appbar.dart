@@ -3,12 +3,16 @@ import './cart_button.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
+  final bool isAtCart;
 
-  CustomAppBar({this.title});
+  CustomAppBar({this.title, this.isAtCart});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: IconThemeData(
+        color: Colors.black,
+      ),
       title: Text(this.title),
       backgroundColor: Colors.transparent,
       elevation: 0.0,
@@ -19,10 +23,13 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
       // Actions permite que a gente coloque itens com açoes na appbar,
       // como por exemplo: botoes
-      actions: <Widget>[
-        CartButton()
-      ],
+      actions: <Widget>[showCart()],
     );
+  }
+
+  showCart() {
+    if(isAtCart) return Container();
+    return CartButton();
   }
 
   @override
