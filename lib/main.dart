@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_alura/app/widgets/products_grid.dart';
 import 'app/pages/details.dart';
 import 'app/pages/cart.dart';
 import 'app/widgets/custom_appbar.dart';
@@ -91,16 +92,7 @@ class Home extends StatelessWidget {
         title: 'Alura E-Commerce',
         isAtCart: false,
       ),
-      body: FlatButton(
-        onPressed: () {
-          // Navigation through Navigator
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Details()),
-          );
-        },
-        child: Text('Detalhes'),
-      ),
+      body: ProductsGrid(furnitures: furnitures),
     );
   }
 }
