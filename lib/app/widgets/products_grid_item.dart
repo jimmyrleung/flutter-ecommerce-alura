@@ -7,25 +7,47 @@ class ProductsGridItemImage extends StatelessWidget {
   ProductsGridItemImage({this.imageFileName});
   @override
   Widget build(BuildContext context) {
-    return Image(
-      // Faz com que a imagem ocupe todo espaço disponível no container
-      fit: BoxFit.cover,
-      image: AssetImage('lib/utils/assets/imagens/$imageFileName'),
+    // Quando utilizamos o item dentro de uma Stack não basta usar o BoxFit.cover
+    // Também precisamos utilizar o Positioned.fill para que todo espaço disponível seja ocupado
+    return Positioned.fill(
+      child: Image(
+        // Faz com que a imagem ocupe todo espaço disponível no container
+        fit: BoxFit.cover,
+        image: AssetImage('lib/utils/assets/imagens/$imageFileName'),
+      ),
     );
   }
 }
 
 class ProductsGridItemTitle extends StatelessWidget {
+  final String titulo;
+
+  ProductsGridItemTitle({this.titulo});
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Positioned(
+      bottom: 10,
+      child: Text(titulo),
+    );
   }
 }
 
 class ProductsGridItemGradient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.transparent,
+            Color.fromRGBO(178, 155, 178, 1),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -36,6 +58,14 @@ class ProductsGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProductsGridItemImage(imageFileName: furniture.foto);
+    // Para fazer uma sobreposição podemos utilizar o stack
+    return Stack(
+      alignment: Alignment.center,
+      children: <Widget>[
+        ProductsGridItemImage(imageFileName: furniture.foto),
+        ProductsGridItemGradient(),
+        ProductsGridItemTitle(titulo: furniture.titulo),
+      ],
+    );
   }
 }
