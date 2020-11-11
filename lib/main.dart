@@ -89,7 +89,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: CustomAppBar(
-        title: 'Alura E-Commerce',
+        title: 'E-Commerce',
         isAtCart: false,
       ),
       body: ProductsGrid(furnitures: furnitures),

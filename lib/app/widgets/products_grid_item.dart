@@ -58,14 +58,32 @@ class ProductsGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Para fazer uma sobreposição podemos utilizar o stack
-    return Stack(
-      alignment: Alignment.center,
-      children: <Widget>[
-        ProductsGridItemImage(imageFileName: furniture.foto),
-        ProductsGridItemGradient(),
-        ProductsGridItemTitle(titulo: furniture.titulo),
-      ],
+    return Container(
+      margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: 2,
+            blurRadius: 8,
+            color: Colors.black12,
+          ),
+        ],
+      ),
+
+      // ClipRRect nos ajuda a cortar elementos filhos de acordo com certas regras,
+      // como por exemplo: borderRadius
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        // Para fazer uma sobreposição podemos utilizar o stack
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            ProductsGridItemImage(imageFileName: furniture.foto),
+            ProductsGridItemGradient(),
+            ProductsGridItemTitle(titulo: furniture.titulo),
+          ],
+        ),
+      ),
     );
   }
 }
