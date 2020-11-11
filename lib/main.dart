@@ -92,7 +92,36 @@ class Home extends StatelessWidget {
         title: 'E-Commerce',
         isAtCart: false,
       ),
-      body: ProductsGrid(furnitures: furnitures),
+      body: Column(
+        children: [
+          Row(
+            children: <Widget>[
+              // Assim como o Flexbile, o expanded é um controle que faz
+              // o seu child ocupar o máximo de espaço possível
+              Expanded(
+                child: Container(
+                  margin:
+                      EdgeInsets.only(left: 30, right: 20, top: 10, bottom: 10),
+                  child: Divider(),
+                ),
+              ),
+              Text('Produtos'),
+              Expanded(
+                child: Container(
+                  margin:
+                      EdgeInsets.only(left: 20, right: 30, top: 10, bottom: 10),
+                  child: Divider(),
+                ),
+              ),
+            ],
+          ),
+          // O Flexible é um controle que faz com que seu child ocupe
+          // o máximo de espaço possível
+          Flexible(
+            child: ProductsGrid(furnitures: furnitures),
+          ),
+        ],
+      ),
     );
   }
 }
