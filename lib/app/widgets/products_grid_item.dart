@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_alura/app/models/furniture.dart';
+import 'package:flutter_ecommerce_alura/app/pages/details.dart';
 
 class ProductsGridItemImage extends StatelessWidget {
   final String imageFileName;
@@ -58,30 +59,40 @@ class ProductsGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            spreadRadius: 2,
-            blurRadius: 8,
-            color: Colors.black12,
-          ),
-        ],
-      ),
-
-      // ClipRRect nos ajuda a cortar elementos filhos de acordo com certas regras,
-      // como por exemplo: borderRadius
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        // Para fazer uma sobreposição podemos utilizar o stack
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            ProductsGridItemImage(imageFileName: furniture.foto),
-            ProductsGridItemGradient(),
-            ProductsGridItemTitle(titulo: furniture.titulo),
+    // o InkWell é parecido com o GestureDetector, porém, ele possui um
+    // efeito visual diferente
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Details(furniture: furniture)),
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 2,
+              blurRadius: 8,
+              color: Colors.black12,
+            ),
           ],
+        ),
+
+        // ClipRRect nos ajuda a cortar elementos filhos de acordo com certas regras,
+        // como por exemplo: borderRadius
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          // Para fazer uma sobreposição podemos utilizar o stack
+          child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              ProductsGridItemImage(imageFileName: furniture.foto),
+              ProductsGridItemGradient(),
+              ProductsGridItemTitle(titulo: furniture.titulo),
+            ],
+          ),
         ),
       ),
     );
