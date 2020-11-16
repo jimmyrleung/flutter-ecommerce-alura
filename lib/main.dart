@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_alura/app/widgets/products_grid.dart';
-import 'app/pages/details.dart';
+import 'package:flutter_ecommerce_alura/color_palette.dart';
 import 'app/pages/cart.dart';
 import 'app/widgets/custom_appbar.dart';
 
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       // * DISABLE debug banner debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        // Set our ColorPalette as theme
+        primarySwatch: ColorPalette().lilac,
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.

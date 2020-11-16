@@ -44,7 +44,7 @@ class ProductsGridItemGradient extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             Colors.transparent,
-            Color.fromRGBO(178, 155, 178, 1),
+            Theme.of(context).primaryColor,
           ],
         ),
       ),
@@ -65,7 +65,8 @@ class ProductsGridItem extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Details(furniture: furniture)),
+          MaterialPageRoute(
+              builder: (context) => Details(furniture: furniture)),
         );
       },
       child: Container(
