@@ -15,18 +15,23 @@ class DetailsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DetailsText(text: furniture.titulo),
           DetailsText(text: furniture.descricao),
-          Row(
-            children: [
-              Text(formatacaoReais.format(furniture.preco)),
-              FlatButton(
-                color: Theme.of(context).primaryColor,
-                onPressed: () {},
-                child: Text('Comprar'),
-              ),
-            ],
+          Container(
+            margin: EdgeInsets.all(16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(formatacaoReais.format(furniture.preco)),
+                FlatButton(
+                  color: Theme.of(context).primaryColor,
+                  onPressed: () {},
+                  child: Text('Comprar', style: TextStyle(color: Colors.white)),
+                ),
+              ],
+            ),
           ),
         ],
       ),
