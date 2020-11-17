@@ -19,13 +19,29 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       // * DISABLE debug banner debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // Set our ColorPalette as theme
+        // Set our primary ColorPalette as theme
         primarySwatch: ColorPalette().lilac,
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
+
+        // Também podemos estabelecer um tema para textos
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            fontSize: 20, 
+            fontFamily: 'Alata', 
+            fontWeight: FontWeight.bold, 
+            color: Colors.black,
+        ),
+        headline2: TextStyle(
+            fontSize: 20, 
+            fontFamily: 'Alata', 
+            fontWeight: FontWeight.bold, 
+            color: Colors.white,
+        ),
       ),
+    ),
       home: Home(),
     );
   }

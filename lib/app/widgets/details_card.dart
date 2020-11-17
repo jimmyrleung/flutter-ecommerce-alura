@@ -17,14 +17,19 @@ class DetailsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DetailsText(text: furniture.titulo),
+          DetailsText(
+            text: furniture.titulo,
+            textStyle: Theme.of(context).textTheme.headline1,
+          ),
           DetailsText(text: furniture.descricao),
           Container(
             margin: EdgeInsets.all(16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(formatacaoReais.format(furniture.preco)),
+                Text(formatacaoReais.format(furniture.preco),
+                  style: Theme.of(context).textTheme.headline1,
+                  ),
                 FlatButton(
                   color: Theme.of(context).primaryColor,
                   onPressed: () {},
