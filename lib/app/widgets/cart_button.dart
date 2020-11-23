@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_alura/app/widgets/cart_button_indicator.dart';
+
+import '../../main.dart';
 
 class CartButton extends StatelessWidget {
   @override
@@ -23,11 +26,27 @@ class CartButton extends StatelessWidget {
           right: 20,
           left: 20,
         ),
-        child: Image(
-          height: 40,
-          image: AssetImage('lib/utils/assets/icones/carrinho.png'),
+        child: Stack(
+          children: _renderStackItems(),
         ),
       ),
     );
+  }
+
+  _renderStackItems() {
+    List<Widget> stackItems = [];
+
+    if (Home.cartItems.length > 0) {
+      stackItems.add(CartButtonIndicator());
+    }
+
+    stackItems.add(
+      Image(
+        height: 40,
+        image: AssetImage('lib/utils/assets/icones/carrinho.png'),
+      ),
+    );
+
+    return stackItems;
   }
 }
