@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_alura/app/models/cart_item.dart';
+import 'package:flutter_ecommerce_alura/main.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_ecommerce_alura/app/models/furniture.dart';
 import 'package:flutter_ecommerce_alura/app/widgets/details_text.dart';
@@ -27,12 +29,15 @@ class DetailsCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(formatacaoReais.format(furniture.preco),
+                Text(
+                  formatacaoReais.format(furniture.preco),
                   style: Theme.of(context).textTheme.headline1,
-                  ),
+                ),
                 FlatButton(
                   color: Theme.of(context).primaryColor,
-                  onPressed: () {},
+                  onPressed: () {
+                    _addItemToCart(CartItem(amount: 1, furniture: furniture));
+                  },
                   child: Text('Comprar', style: TextStyle(color: Colors.white)),
                 ),
               ],
@@ -41,5 +46,9 @@ class DetailsCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _addItemToCart(CartItem item) {
+    Home.cartItems.add(item);
   }
 }

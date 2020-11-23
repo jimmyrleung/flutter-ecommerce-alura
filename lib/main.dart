@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_alura/app/models/cart_item.dart';
 import 'package:flutter_ecommerce_alura/app/widgets/products_grid.dart';
 import 'package:flutter_ecommerce_alura/color_palette.dart';
 import 'app/pages/cart.dart';
@@ -29,25 +30,27 @@ class MyApp extends StatelessWidget {
         // Também podemos estabelecer um tema para textos
         textTheme: TextTheme(
           headline1: TextStyle(
-            fontSize: 20, 
-            fontFamily: 'Alata', 
-            fontWeight: FontWeight.bold, 
+            fontSize: 20,
+            fontFamily: 'Alata',
+            fontWeight: FontWeight.bold,
             color: Colors.black,
-        ),
-        headline2: TextStyle(
-            fontSize: 20, 
-            fontFamily: 'Alata', 
-            fontWeight: FontWeight.bold, 
+          ),
+          headline2: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Alata',
+            fontWeight: FontWeight.bold,
             color: Colors.white,
+          ),
         ),
       ),
-    ),
       home: Home(),
     );
   }
 }
 
 class Home extends StatelessWidget {
+  static List<CartItem> cartItems = [];
+
   final List furnitures = [
     {
       "titulo": "Mesa",
