@@ -26,15 +26,47 @@ class CartList extends StatelessWidget {
                   image:
                       AssetImage('lib/utils/assets/imagens/${furniture.foto}'),
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(furniture.titulo),
-                      Text('${furniture.preco}'),
-                      Text('${item.amount}'),
-                    ],
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.only(left: 16),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(furniture.titulo),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('${furniture.preco}'),
+                            Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () => _increaseAmount(item),
+                                  child: Container(
+                                    margin: EdgeInsets.all(10),
+                                    child: Icon(
+                                      Icons.add,
+                                      size: 15,
+                                    ),
+                                  ),
+                                ),
+                                Text('${item.amount}'),
+                                GestureDetector(
+                                  onTap: () => _decreaseAmount(item),
+                                  child: Container(
+                                    margin: EdgeInsets.all(10),
+                                    child: Icon(
+                                      Icons.remove,
+                                      size: 15,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -43,5 +75,13 @@ class CartList extends StatelessWidget {
         );
       },
     );
+  }
+
+  _increaseAmount(CartItem item) {
+    item.amount++;
+  }
+
+  _decreaseAmount(CartItem item) {
+    item.amount--;
   }
 }
