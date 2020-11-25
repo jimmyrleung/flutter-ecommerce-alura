@@ -4,17 +4,25 @@ import 'package:flutter_ecommerce_alura/app/models/furniture.dart';
 import 'package:flutter_ecommerce_alura/app/widgets/custom_appbar.dart';
 import 'package:flutter_ecommerce_alura/app/widgets/details_card.dart';
 
-class Details extends StatelessWidget {
+class Details extends StatefulWidget {
   final Furniture furniture;
-
   Details({this.furniture});
+
+  _DetailsState createState() => _DetailsState();
+}
+
+class _DetailsState extends State<Details> {
+  void initState() {
+    // Initialize state
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage('lib/utils/assets/imagens/${furniture.foto}'),
+        image: AssetImage('lib/utils/assets/imagens/${widget.furniture.foto}'),
         fit: BoxFit.cover,
       )),
       child: Scaffold(
@@ -27,13 +35,18 @@ class Details extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Container(
             margin: EdgeInsets.all(16),
-            height: 220 ,
+            height: 220,
             child: DetailsCard(
-              furniture: furniture,
+              furniture: widget.furniture,
+              triggerUpdate: update,
             ),
           ),
         ),
       ),
     );
+  }
+
+  update() {
+    setState(() {});
   }
 }

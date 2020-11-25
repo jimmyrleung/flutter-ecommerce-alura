@@ -7,11 +7,12 @@ import 'package:flutter_ecommerce_alura/app/widgets/details_text.dart';
 
 class DetailsCard extends StatelessWidget {
   final Furniture furniture;
+  final Function triggerUpdate;
 
   // Precisamos escapar o $ para indicar que não é uma interpolação
   final formatacaoReais = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
 
-  DetailsCard({this.furniture});
+  DetailsCard({this.furniture, this.triggerUpdate});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,7 @@ class DetailsCard extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                   onPressed: () {
                     _addItemToCart(CartItem(amount: 1, furniture: furniture));
+                    triggerUpdate();
                   },
                   child: Text('Comprar', style: TextStyle(color: Colors.white)),
                 ),
