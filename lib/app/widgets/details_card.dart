@@ -51,6 +51,12 @@ class DetailsCard extends StatelessWidget {
   }
 
   _addItemToCart(CartItem item) {
-    Home.cartItems.add(item);
+    int itemIndex = Home.cartItems.indexWhere((cartItem) => cartItem.furniture.titulo == item.furniture.titulo);
+    print(itemIndex);
+    if (itemIndex > -1) {
+      Home.cartItems[itemIndex].amount++;
+    } else {
+      Home.cartItems.add(item);
+    }
   }
 }
