@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_alura/app/models/cart_item.dart';
 import 'package:flutter_ecommerce_alura/app/models/furniture.dart';
 import 'package:flutter_ecommerce_alura/main.dart';
+import 'package:intl/intl.dart';
 
 class CartList extends StatefulWidget {
   final Function updateCart;
@@ -15,6 +16,8 @@ class CartList extends StatefulWidget {
 
 class _CartListState extends State<CartList> {
   final List<CartItem> items = Home.cartItems;
+  final formatBRL = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -30,10 +33,13 @@ class _CartListState extends State<CartList> {
             // like a row or a column
             child: Row(
               children: [
-                Image(
-                  height: 90,
-                  image:
-                      AssetImage('lib/utils/assets/imagens/${furniture.foto}'),
+                Expanded(
+                  child: Image(
+                    fit: BoxFit.cover,
+                    height: 90,
+                    image: AssetImage(
+                        'lib/utils/assets/imagens/${furniture.foto}'),
+                  ),
                 ),
                 Expanded(
                   child: Container(
@@ -42,11 +48,11 @@ class _CartListState extends State<CartList> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(furniture.titulo),
+                        Text(furniture.titulo, style: Theme.of(context).textTheme.headline3),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('${furniture.preco}'),
+                            Text(formatBRL.format(furniture.preco)),
                             Row(
                               children: [
                                 GestureDetector(
