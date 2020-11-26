@@ -4,7 +4,16 @@ import 'package:flutter_ecommerce_alura/app/models/cart_item.dart';
 import 'package:flutter_ecommerce_alura/app/models/furniture.dart';
 import 'package:flutter_ecommerce_alura/main.dart';
 
-class CartList extends StatelessWidget {
+class CartList extends StatefulWidget {
+  final Function updateCart;
+
+  CartList({this.updateCart});
+
+  @override
+  _CartListState createState() => _CartListState();
+}
+
+class _CartListState extends State<CartList> {
   final List<CartItem> items = Home.cartItems;
   @override
   Widget build(BuildContext context) {
@@ -78,10 +87,19 @@ class CartList extends StatelessWidget {
   }
 
   _increaseAmount(CartItem item) {
-    item.amount++;
+    setState(() {
+      item.amount++;
+      widget.updateCart();
+    });
   }
 
   _decreaseAmount(CartItem item) {
-    item.amount--;
+    setState(() {
+      if (item.amount > 1) {
+        item.amount--;
+      }
+
+      widget.updateCart();
+    });
   }
 }
