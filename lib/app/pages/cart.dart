@@ -25,7 +25,8 @@ class _CartState extends State<Cart> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Total', style: Theme.of(context).textTheme.headline4),
-            Text('${currencyFormat.format(total)}', style: Theme.of(context).textTheme.headline5),
+            Text('${currencyFormat.format(total)}',
+                style: Theme.of(context).textTheme.headline5),
           ],
         ),
       ),
@@ -34,10 +35,22 @@ class _CartState extends State<Cart> {
         title: 'Carrinho',
         isAtCart: true,
       ),
-      body: CartList(
-        updateCart: updateCart,
-      ),
+      body: renderCart(),
     );
+  }
+
+  Widget renderCart() {
+    if (Home.cartItems.isNotEmpty) {
+      return CartList(
+        updateCart: updateCart,
+      );
+    } else {
+      return Container(
+        height: double.infinity,
+        alignment: Alignment.center,
+        child: Text('Nenhum item no carrinho.'),
+      );
+    }
   }
 
   updateCart() {
